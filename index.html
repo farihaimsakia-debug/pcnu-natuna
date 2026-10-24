@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCNU Kabupaten Natuna</title>
+
+<style>
+*{box-sizing:border-box}
+:root{--g:#087449;--d:#064b32;--cream:#f6f5ed}
+body{margin:0;font-family:Arial,sans-serif;color:#234333;background:white}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font:inherit}
+img{max-width:100%}
+.container{width:94%;max-width:1400px;margin:auto}
+.top{background:var(--g);color:white;padding:10px}
+.top .container{display:flex;justify-content:space-between;gap:10px}
+header{padding:22px 0;background:#edf6f0}
+.head{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:15px}
+.logo{background:var(--g);border:3px solid #d6bd61;color:white;width:90px;height:90px;display:grid;place-content:center;text-align:center;font-size:30px;flex-shrink:0}
+.logo small{font-size:13px}
+.brand h1{font:bold 28px Georgia;margin:5px 0;color:var(--d)}
+.brand h2{font:bold 21px Georgia;margin:0}
+.brand p{font:italic 14px Georgia;color:#96783b}
+.search{display:flex;border:1px solid #ddd;border-radius:25px;overflow:hidden;background:white}
+.search input{padding:12px;border:0;outline:none;width:230px}
+.search button{background:var(--g);color:white;border:0;padding:12px 18px}
+nav{background:var(--g);color:white}
+nav .container{display:flex;flex-wrap:wrap}
+nav button{border:0;background:none;color:white;padding:15px 10px;font-size:13px;font-weight:bold}
+nav button:hover,nav button.active{background:var(--d)}
+main{min-height:65vh;padding:25px 0}
+.page-title{color:var(--g);font:bold 30px Georgia;margin:5px 0 10px}
+.breadcrumb{color:#77877c;font-size:13px;margin-bottom:20px}
+.hero{position:relative;height:370px;overflow:hidden;border-radius:7px;background:#17432f;color:white}
+.hero img{width:100%;height:100%;object-fit:cover;cursor:pointer}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,#000c);pointer-events:none}
+.hero-text{position:absolute;z-index:1;bottom:20px;left:25px;right:25px}
+.hero h2{font:bold 30px Georgia;line-height:1.2;cursor:pointer}
+.btn{background:var(--g);border:0;border-radius:4px;padding:11px 16px;color:white;font-weight:bold}
+.btn:hover{background:var(--d)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:20px}
+.card{border:1px solid #dfe6df;border-radius:7px;overflow:hidden;background:white}
+.card img{width:100%;height:190px;object-fit:cover;cursor:pointer}
+.card-body{padding:16px}
+.card h3{font:bold 19px Georgia;color:var(--d);cursor:pointer}
+.card p{font-size:14px;line-height:1.7;color:#5c6b60}
+.tag{background:#e5f3e9;color:var(--g);font-size:11px;font-weight:bold;padding:6px 9px;display:inline-block;border-radius:3px}
+.panel{background:#f5f7f2;padding:22px;border-radius:7px;margin:15px 0;line-height:1.8}
+.panel h3{color:var(--g);font-family:Georgia}
+.columns{display:grid;grid-template-columns:2fr 1fr;gap:22px}
+.list-item{padding:16px 0;border-bottom:1px solid #ddd}
+.list-item h3{margin:5px 0;color:var(--d)}
+.list-item p{font-size:14px;line-height:1.6}
+.gallery img{height:210px}
+.document{display:flex;gap:14px;align-items:center;padding:17px;border:1px solid #ddd;border-radius:6px;margin:12px 0;flex-wrap:wrap}
+.document .file-icon{font-size:30px}
+.document p{font-size:13px;color:#66756a}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat{background:#edf4eb;padding:20px;border-radius:6px;text-align:center}
+.stat strong{display:block;color:var(--g);font-size:26px}
+footer{background:var(--d);color:white;padding:28px 0;margin-top:30px}
+footer p{font-size:13px;line-height:1.7}
+footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.notice{padding:13px;background:#fff8df;border-left:4px solid #d4ad48;font-size:13px;line-height:1.6}
+.clickable{cursor:pointer}
+.empty{padding:20px;background:#f5f7f2;border-radius:6px;margin-top:15px}
+input,textarea{font:inherit}
+
+@media(max-width:850px){
+ .head{align-items:flex-start;flex-direction:column}
+ .columns{grid-template-columns:1fr}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ nav .container{display:grid;grid-template-columns:repeat(3,1fr)}
+ nav button{padding:12px 5px}
+}
+@media(max-width:550px){
+ .top .container{flex-direction:column}
+ .logo{width:60px;height:60px;font-size:22px}
+ .brand h1{font-size:19px}
+ .brand h2{font-size:15px}
+ .brand p{font-size:11px}
+ .search,.search input{width:100%}
+ .grid{grid-template-columns:1fr}
+ .hero{height:340px}
+ .hero h2{font-size:24px}
+ nav .container{grid-template-columns:repeat(2,1fr)}
+ .page-title{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+ <div class="container">
+  <span>✦ Assalamu'alaikum warahmatullahi wabarakatuh</span>
+  <span>NU untuk Umat, Umat untuk Bangsa ✦</span>
+ </div>
+</div>
+
+<header>
+ <div class="container head">
+  <div class="brand">
+   <div class="logo">نُوْ<small>N U</small></div>
+   <div>
+    <b>PENGURUS CABANG</b>
+    <h1>NAHDLATUL ULAMA</h1>
+    <h2>KABUPATEN NATUNA</h2>
+    <p>Merawat Tradisi, Menguatkan Umat, Menjaga Keutuhan Bangsa</p>
+   </div>
+  </div>
+
+  <form class="search" id="searchForm">
+   <input id="searchInput" placeholder="Cari berita atau informasi...">
+   <button type="submit">⌕</button>
+  </form>
+ </div>
+</header>
+
+<nav>
+ <div class="container" id="navigation"></div>
+</nav>
+
+<main class="container">
+ <div id="content"></div>
+</main>
+
+<footer>
+ <div class="container">
+  <div>
+   <h2>PCNU KABUPATEN NATUNA</h2>
+   <p>Merawat Tradisi, Menguatkan Umat, Menjaga Keutuhan Bangsa.</p>
+   <p>Kabupaten Natuna, Kepulauan Riau</p>
+  </div>
+  <div>
+   <b>Hubungi Kami</b>
+   <p>Tambahkan alamat sekretariat, nomor telepon, dan email resmi PCNU Natuna.</p>
+   <p>© 2026 PCNU Kabupaten Natuna</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+const menu = [
+ ["Beranda","beranda"],
+ ["Profil","profil"],
+ ["Organisasi","organisasi"],
+ ["Keislaman & Keaswajaan","keislaman"],
+ ["Berita","berita"],
+ ["Lembaga & Banom","lembaga"],
+ ["Pendidikan","pendidikan"],
+ ["Dakwah & Sosial","dakwah"],
+ ["Ekonomi Umat","ekonomi"],
+ ["Galeri","galeri"],
+ ["Publikasi","publikasi"],
+ ["Kontak","kontak"]
+];
+
+const berita = [
+ {
+  judul:"PCNU Natuna Perkuat Khidmah Keumatan",
+  kategori:"BERITA UTAMA",
+  tanggal:"18 Oktober 2026",
+  gambar:"https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=900&q=80",
+  isi:"PCNU Kabupaten Natuna terus mengembangkan kegiatan keumatan melalui dakwah, pendidikan, sosial, dan penguatan organisasi. Lengkapi artikel ini dengan berita resmi dan dokumentasi kegiatan."
+ },
+ {
+  judul:"NU Peduli Natuna Salurkan Bantuan Sosial",
+  kategori:"SOSIAL & KEMANUSIAAN",
+  tanggal:"8 Oktober 2026",
+  gambar:"https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=900&q=80",
+  isi:"Kegiatan sosial merupakan salah satu bentuk kepedulian kepada masyarakat yang membutuhkan."
+ },
+ {
+  judul:"Kegiatan Pendidikan Kader Nahdlatul Ulama",
+  kategori:"PENDIDIKAN",
+  tanggal:"5 Oktober 2026",
+  gambar:"https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=80",
+  isi:"Pendidikan kader menjadi bagian dari upaya meningkatkan pengetahuan, kepemimpinan, dan pengabdian kepada masyarakat."
+ }
+];
+
+const agenda = [
+ [
+  "Pengajian Rutin Ahad Pagi",
+  "15 Oktober 2026",
+  "Masjid Agung Natuna",
+  "Kegiatan pengajian untuk memperdalam ilmu agama, mempererat silaturahmi, dan meningkatkan keimanan masyarakat."
+ ],
+ [
+  "Pelatihan Manajemen Pesantren",
+  "18 Oktober 2026",
+  "Aula PCNU Natuna",
+  "Kegiatan pelatihan untuk meningkatkan kemampuan pengelolaan pesantren, administrasi, dan pengembangan pendidikan Islam."
+ ],
+ [
+  "Bakti Sosial Kesehatan",
+  "22 Oktober 2026",
+  "Kabupaten Natuna",
+  "Kegiatan pelayanan sosial dan kesehatan bagi masyarakat, sebagai bentuk kepedulian PCNU Natuna terhadap kesejahteraan umat."
+ ]
+];
+
+/* DATA PROGRAM EKONOMI UMAT */
+const programEkonomi = [
+ {
+  judul:"Pelatihan UMKM",
+  deskripsi:"Membekali warga dengan keterampilan mengelola usaha, membuat kemasan produk yang menarik, memasarkan produk secara digital, dan mengatur keuangan usaha.",
+  detail:"Program Pelatihan UMKM bertujuan meningkatkan kemampuan pelaku usaha kecil agar lebih siap mengembangkan usahanya. Materi dapat meliputi pengelolaan modal, pencatatan keuangan, strategi promosi, kemasan produk, serta pemanfaatan media sosial untuk pemasaran."
+ },
+ {
+  judul:"Pengembangan Usaha",
+  deskripsi:"Mendorong usaha masyarakat agar berkembang melalui peningkatan kualitas produk, perluasan pemasaran, pendampingan usaha, dan kerja sama antarpelaku UMKM.",
+  detail:"Program Pengembangan Usaha berfokus pada pendampingan pelaku usaha untuk meningkatkan kualitas produk, memperluas jangkauan pasar, membangun jaringan kerja sama, dan menemukan peluang usaha baru."
+ },
+ {
+  judul:"Kemandirian Ekonomi",
+  deskripsi:"Mendorong kemandirian ekonomi warga melalui kewirausahaan, pemberdayaan potensi lokal, dan pengembangan usaha produktif untuk meningkatkan kesejahteraan keluarga.",
+  detail:"Program Kemandirian Ekonomi bertujuan mendorong masyarakat agar lebih mandiri dan berdaya. Kegiatannya dapat berupa pendampingan calon wirausaha, pemanfaatan potensi daerah, pengembangan usaha bersama, dan penguatan ekonomi keluarga."
+ }
+];
+
+const gambarGaleri = [
+ ["Kegiatan sosial masyarakat","https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=700&q=80"],
+ ["Masjid dan kegiatan keagamaan","https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=700&q=80"],
+ ["Kegiatan pemuda","https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=700&q=80"],
+ ["Suasana masjid","https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=700&q=80"],
+ ["Kegiatan pendidikan","https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=80"],
+ ["Kegiatan masyarakat","https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=700&q=80"]
+];
+
+const content = document.getElementById("content");
+const navigation = document.getElementById("navigation");
+
+function buatMenu(){
+ navigation.innerHTML = menu.map(m =>
+  `<button data-page="${m[1]}">${m[0]}</button>`
+ ).join("");
+}
+
+function judulHalaman(judul){
+ return `<h1 class="page-title">${judul}</h1>
+ <div class="breadcrumb">
+ <a href="#" data-page="beranda">Beranda</a> / ${judul}
+ </div>`;
+}
+
+function kartuBerita(item,index){
+ return `<article class="card">
+  <img src="${item.gambar}" alt="${item.judul}" data-read="${index}">
+  <div class="card-body">
+   <span class="tag">${item.kategori}</span>
+   <h3 data-read="${index}">${item.judul}</h3>
+   <p>${item.tanggal}</p>
+   <button class="btn" data-read="${index}">Baca Selengkapnya →</button>
+  </div>
+ </article>`;
+}
+
+function halamanBeranda(){
+ return `
+ <section class="hero">
+  <img src="${berita[0].gambar}" alt="Kegiatan PCNU" data-read="0">
+  <div class="hero-text">
+   <span class="tag">BERITA UTAMA</span>
+   <h2 data-read="0">PCNU Natuna Perkuat Khidmah Keumatan dan Persatuan Masyarakat</h2>
+   <p>Merawat tradisi, memperkuat persaudaraan, dan melayani umat.</p>
+   <button class="btn" data-read="0">Baca Selengkapnya →</button>
+  </div>
+ </section>
+
+ <div class="columns">
+  <section>
+   ${judulHalaman("Kabar Nahdliyin")}
+   <div class="grid">${berita.map((b,i)=>kartuBerita(b,i)).join("")}</div>
+   <p><button class="btn" data-page="berita">Lihat Semua Berita →</button></p>
+  </section>
+
+  <aside>
+   <div class="panel">
+    <h3>Agenda Terdekat</h3>
+    ${agenda.map((a,i)=>`
+     <div class="list-item">
+      <b>${a[0]}</b>
+      <p>${a[1]} · ${a[2]}</p>
+      <button class="btn" data-agenda="${i}">Lihat Detail</button>
+     </div>
+    `).join("")}
+    <p><button class="btn" data-page="agenda">Semua Agenda</button></p>
+   </div>
+
+   <div class="panel">
+    <h3>Khidmah PCNU</h3>
+    <div class="stats">
+     <div class="stat"><strong>12</strong>Majelis & Lembaga</div>
+     <div class="stat"><strong>27</strong>Banom</div>
+     <div class="stat"><strong>5</strong>Pesantren</div>
+     <div class="stat"><strong>3.500+</strong>Warga NU*</div>
+    </div>
+   </div>
+  </aside>
+ </div>`;
+}
+
+function halamanProfil(){
+ return `${judulHalaman("Profil PCNU Kabupaten Natuna")}
+ <div class="panel">
+  <h3>Tentang PCNU Natuna</h3>
+  <p>Pengurus Cabang Nahdlatul Ulama Kabupaten Natuna merupakan bagian dari organisasi Nahdlatul Ulama yang berkhidmat untuk agama, masyarakat, bangsa, dan negara.</p>
+  <p>Halaman ini dapat memuat sejarah berdirinya PCNU Natuna, tokoh pendiri, dan perkembangan kegiatan di Kabupaten Natuna.</p>
+ </div>
+ <div class="grid">
+  <div class="panel"><h3>Visi</h3><p>Menjadi organisasi yang berkhidmat untuk umat dan menjaga nilai keislaman serta kebangsaan.</p></div>
+  <div class="panel"><h3>Misi</h3><p>Mengembangkan dakwah, pendidikan, sosial, dan pemberdayaan masyarakat.</p></div>
+  <div class="panel"><h3>Nilai Organisasi</h3><p>Menjaga tradisi, memperkuat persaudaraan, dan mengedepankan kemaslahatan umat.</p></div>
+ </div>`;
+}
+
+function halamanOrganisasi(){
+ const daftar=["Mustasyar","Syuriyah","Tanfidziyah"];
+ return `${judulHalaman("Organisasi PCNU Natuna")}
+ <div class="panel"><h3>Struktur Organisasi</h3>
+ <p>Tambahkan susunan pengurus PCNU Kabupaten Natuna berdasarkan surat keputusan resmi.</p></div>
+ <div class="grid">${daftar.map((x,i)=>`
+  <div class="card"><div class="card-body">
+   <h3 data-service="${x}">${x}</h3>
+   <p>${["Dewan penasihat organisasi.","Pimpinan bidang keagamaan dan kebijakan organisasi.","Pelaksana program dan kegiatan organisasi."][i]}</p>
+   <button class="btn" data-service="${x}">Lihat Detail</button>
+  </div></div>`).join("")}
+ </div>`;
+}
+
+function halamanKeislaman(){
+ return `${judulHalaman("Keislaman & Keaswajaan")}
+ <div class="panel"><h3>Kajian Keislaman</h3><p>Informasi kajian kitab, pengajian, amaliah Ahlussunnah wal Jamaah, dan kegiatan keagamaan PCNU Natuna.</p></div>
+ <div class="grid">${["Kajian Kitab","Pengajian Rutin","Amaliah Aswaja"].map(x=>`
+  <div class="card"><div class="card-body">
+   <h3 data-service="${x}">${x}</h3>
+   <p>Informasi materi, jadwal, dan dokumentasi kegiatan ${x.toLowerCase()}.</p>
+   <button class="btn" data-service="${x}">Lihat Informasi</button>
+  </div></div>`).join("")}
+ </div>`;
+}
+
+function halamanBerita(){
+ return `${judulHalaman("Berita PCNU Natuna")}
+ <p>Berita, informasi, dan dokumentasi kegiatan Nahdlatul Ulama di Kabupaten Natuna.</p>
+ <div class="grid">${berita.map((b,i)=>kartuBerita(b,i)).join("")}</div>`;
+}
+
+function halamanLembaga(){
+ const data=[
+  "Lembaga Pendidikan Ma'arif NU",
+  "Lembaga Dakwah NU",
+  "Lembaga Kesehatan NU",
+  "Lembaga Amil Zakat, Infak dan Sedekah",
+  "Lembaga Perekonomian NU",
+  "Lembaga Ta'lif wan Nasyr"
+ ];
+ return `${judulHalaman("Lembaga & Badan Otonom")}
+ <div class="panel"><h3>Lembaga dan Banom</h3><p>Daftar lembaga dan badan otonom dapat dilengkapi berdasarkan struktur resmi PCNU Kabupaten Natuna.</p></div>
+ <div class="grid">${data.map(x=>`
+  <div class="card"><div class="card-body">
+   <h3 data-service="${x}">${x}</h3>
+   <p>Informasi tugas, program, dan kegiatan ${x}.</p>
+   <button class="btn" data-service="${x}">Lihat Detail</button>
+  </div></div>`).join("")}
+ </div>`;
+}
+
+function halamanPendidikan(){
+ return `${judulHalaman("Pendidikan & Pesantren")}
+ <div class="grid">${["Pendidikan Pesantren","Pendidikan Kader","Beasiswa Pendidikan"].map(x=>`
+  <div class="card"><div class="card-body">
+   <h3 data-service="${x}">${x}</h3>
+   <p>Informasi program, kegiatan, dan pengembangan pendidikan untuk masyarakat.</p>
+   <button class="btn" data-service="${x}">Lihat Detail</button>
+  </div></div>`).join("")}
+ </div>`;
+}
+
+function halamanDakwah(){
+ return `${judulHalaman("Dakwah & Sosial")}
+ <div class="panel"><h3>Khidmah untuk Masyarakat</h3><p>Informasi kegiatan dakwah, bantuan sosial, kepedulian kemanusiaan, dan pengabdian masyarakat.</p></div>
+ <div class="grid">${berita.map((b,i)=>kartuBerita(b,i)).join("")}</div>`;
+}
+
+/* FUNGSI EKONOMI UMAT SUDAH DIGANTI */
+function halamanEkonomi(){
+ return `${judulHalaman("Ekonomi Umat")}
+
+ <div class="panel">
+  <h3>Pemberdayaan Ekonomi Masyarakat</h3>
+  <p>PCNU Kabupaten Natuna dapat berperan dalam mendorong pemberdayaan ekonomi umat melalui pengembangan keterampilan, pendampingan usaha, dan pemanfaatan potensi ekonomi lokal.</p>
+ </div>
+
+ <div class="grid">
+  ${programEkonomi.map((p,i)=>`
+   <div class="card">
+    <div class="card-body">
+     <span class="tag">EKONOMI UMAT</span>
+     <h3>${p.judul}</h3>
+     <p>${p.deskripsi}</p>
+     <button class="btn" data-ekonomi="${i}">
+      Selengkapnya →
+     </button>
+    </div>
+   </div>
+  `).join("")}
+ </div>`;
+}
+
+function halamanGaleri(){
+ return `${judulHalaman("Galeri Kegiatan")}
+ <p>Dokumentasi foto kegiatan PCNU Kabupaten Natuna.</p>
+ <div class="grid gallery">${gambarGaleri.map((g,i)=>`
+  <article class="card">
+   <img src="${g[1]}" alt="${g[0]}" data-photo="${i}">
+   <div class="card-body">
+    <h3 data-photo="${i}">${g[0]}</h3>
+    <button class="btn" data-photo="${i}">Lihat Foto</button>
+   </div>
+  </article>`).join("")}
+ </div>`;
+}
+
+function halamanPublikasi(){
+ const docs=[
+  ["Profil PCNU Kabupaten Natuna","Dokumen profil organisasi"],
+  ["Program Kerja PCNU","Dokumen program kerja"],
+  ["Pengumuman Kegiatan","Informasi dan pengumuman"],
+  ["Laporan Kegiatan","Dokumentasi laporan kegiatan"]
+ ];
+ return `${judulHalaman("Publikasi & Dokumen")}
+ <div class="panel"><h3>Pusat Publikasi</h3><p>Halaman untuk mengumpulkan dokumen, pengumuman, laporan, dan informasi resmi PCNU Natuna.</p></div>
+ ${docs.map((d,i)=>`
+  <div class="document">
+   <div class="file-icon">📄</div>
+   <div style="flex:1">
+    <b class="clickable" data-doc="${i}">${d[0]}</b>
+    <p>${d[1]}</p>
+   </div>
+   <button class="btn" data-doc="${i}">Lihat</button>
+  </div>`).join("")}
+ <div class="notice">Dokumen resmi perlu diunggah agar dapat dibuka atau diunduh.</div>`;
+}
+
+function halamanKontak(){
+ return `${judulHalaman("Kontak PCNU Natuna")}
+ <div class="columns">
+  <div class="panel">
+   <h3>Hubungi Kami</h3>
+   <p><b>Organisasi:</b> PCNU Kabupaten Natuna</p>
+   <p><b>Alamat:</b> Kabupaten Natuna, Kepulauan Riau</p>
+   <p><b>Telepon:</b> Belum ditambahkan</p>
+   <p><b>Email:</b> Belum ditambahkan</p>
+   <div class="notice">Isi alamat sekretariat, nomor telepon, dan email resmi sebelum website dipublikasikan.</div>
+  </div>
+  <div class="panel">
+   <h3>Kirim Pesan</h3>
+   <form id="contactForm">
+    <p><input required placeholder="Nama" style="padding:12px;width:100%"></p>
+    <p><input required type="email" placeholder="Email" style="padding:12px;width:100%"></p>
+    <p><textarea required placeholder="Pesan" rows="5" style="padding:12px;width:100%"></textarea></p>
+    <button class="btn" type="submit">Periksa Pesan</button>
+   </form>
+  </div>
+ </div>`;
+}
+
+function halamanAgenda(){
+ return `${judulHalaman("Agenda Kegiatan")}
+ <div class="grid">${agenda.map((a,i)=>`
+  <div class="card"><div class="card-body">
+   <span class="tag">${a[1]}</span>
+   <h3 data-agenda="${i}">${a[0]}</h3>
+   <p>Lokasi: ${a[2]}</p>
+   <button class="btn" data-agenda="${i}">Lihat Detail</button>
+  </div></div>`).join("")}
+ </div>`;
+}
+
+const pages={
+ beranda:halamanBeranda,
+ profil:halamanProfil,
+ organisasi:halamanOrganisasi,
+ keislaman:halamanKeislaman,
+ berita:halamanBerita,
+ lembaga:halamanLembaga,
+ pendidikan:halamanPendidikan,
+ dakwah:halamanDakwah,
+ ekonomi:halamanEkonomi,
+ galeri:halamanGaleri,
+ publikasi:halamanPublikasi,
+ kontak:halamanKontak,
+ agenda:halamanAgenda
+};
+
+function bukaHalaman(id){
+ if(!pages[id])return;
+
+ content.innerHTML=pages[id]();
+
+ navigation.querySelectorAll("[data-page]").forEach(b=>{
+  b.classList.toggle("active",b.dataset.page===id);
+ });
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function modal(title,html){
+ document.getElementById("modal")?.remove();
+
+ const el=document.createElement("div");
+ el.id="modal";
+ el.style.cssText="position:fixed;inset:0;background:#0009;display:flex;align-items:center;justify-content:center;padding:20px;z-index:1000";
+
+ el.innerHTML=`
+  <div style="background:white;border-radius:8px;max-width:650px;width:100%;max-height:85vh;overflow:auto">
+   <div style="background:#087449;color:white;padding:15px;display:flex;justify-content:space-between;gap:10px;align-items:center">
+    <b>${title}</b>
+    <button id="closeModal" style="border:0;padding:8px;cursor:pointer">Tutup ✕</button>
+   </div>
+   <div style="padding:20px;line-height:1.7">${html}</div>
+  </div>`;
+
+ document.body.appendChild(el);
+ document.getElementById("closeModal").onclick=()=>el.remove();
+
+ el.addEventListener("click",e=>{
+  if(e.target===el)el.remove();
+ });
+}
+
+document.addEventListener("click",e=>{
+ const page=e.target.closest("[data-page]");
+
+ if(page){
+  e.preventDefault();
+  bukaHalaman(page.dataset.page);
+  return;
+ }
+
+ const read=e.target.closest("[data-read]");
+
+ if(read){
+  const b=berita[Number(read.dataset.read)];
+
+  if(b)modal(b.judul,`
+   <img src="${b.gambar}" alt="${b.judul}" style="width:100%;max-height:300px;object-fit:cover">
+   <p><b>${b.kategori} · ${b.tanggal}</b></p>
+   <p>${b.isi}</p>
+   <div class="notice">Artikel ini masih contoh. Ganti dengan berita resmi PCNU Natuna.</div>
+  `);
+
+  return;
+ }
+
+ /* DETAIL AGENDA: SETIAP AGENDA PUNYA DESKRIPSI BERBEDA */
+ const ag=e.target.closest("[data-agenda]");
+
+ if(ag){
+  const a=agenda[Number(ag.dataset.agenda)];
+
+  if(a)modal(a[0],`
+   <p><b>Tanggal:</b> ${a[1]}</p>
+   <p><b>Lokasi:</b> ${a[2]}</p>
+   <p><b>Deskripsi Kegiatan:</b></p>
+   <p>${a[3]}</p>
+  `);
+
+  return;
+ }
+
+ /* DETAIL EKONOMI UMAT: TOMBOL SUDAH TERHUBUNG */
+ const ekonomi=e.target.closest("[data-ekonomi]");
+
+ if(ekonomi){
+  const p=programEkonomi[Number(ekonomi.dataset.ekonomi)];
+
+  if(p){
+   modal(p.judul,`
+    <p><b>Informasi Program</b></p>
+    <p>${p.detail}</p>
+    <div class="notice">
+     Informasi ini merupakan rancangan program dan dapat disesuaikan
+     dengan kegiatan resmi PCNU Kabupaten Natuna.
+    </div>
+   `);
+  }
+
+  return;
+ }
+
+ const service=e.target.closest("[data-service]");
+
+ if(service){
+  modal(service.dataset.service,`
+   <p>Informasi tentang <b>${service.dataset.service}</b>.</p>
+   <p>Tambahkan keterangan resmi, jadwal, dan kontak pengurus terkait pada bagian ini.</p>
+  `);
+
+  return;
+ }
+
+ const photo=e.target.closest("[data-photo]");
+
+ if(photo){
+  const g=gambarGaleri[Number(photo.dataset.photo)];
+
+  if(g)modal(g[0],`
+   <img src="${g[1]}" alt="${g[0]}" style="width:100%;border-radius:5px">
+  `);
+
+  return;
+ }
+
+ const doc=e.target.closest("[data-doc]");
+
+ if(doc){
+  const names=[
+   "Profil PCNU Kabupaten Natuna",
+   "Program Kerja PCNU",
+   "Pengumuman Kegiatan",
+   "Laporan Kegiatan"
+  ];
+
+  modal(names[Number(doc.dataset.doc)],`
+   <p>File dokumen ini belum diunggah.</p>
+   <p>Pengelola dapat menambahkan file PDF resmi agar dokumen dapat dibuka atau diunduh.</p>
+  `);
+ }
+});
+
+document.addEventListener("submit",e=>{
+ if(e.target.id==="searchForm"){
+  e.preventDefault();
+
+  const q=document.getElementById("searchInput").value.trim().toLowerCase();
+
+  const hasil=berita.map((b,i)=>({b,i})).filter(x=>
+   (x.b.judul+" "+x.b.kategori+" "+x.b.isi).toLowerCase().includes(q)
+  );
+
+  content.innerHTML=judulHalaman("Hasil Pencarian")+`
+   <div id="hasilBerita" class="grid"></div>
+   <div id="pesanKosong"></div>`;
+
+  content.querySelector(".breadcrumb").insertAdjacentHTML(
+   "afterend",
+   `<p>Hasil pencarian untuk: <b id="kataKunci"></b></p>`
+  );
+
+  content.querySelector("#kataKunci").textContent=q||"semua berita";
+
+  content.querySelector("#hasilBerita").innerHTML=
+   hasil.map(x=>kartuBerita(x.b,x.i)).join("");
+
+  if(!hasil.length){
+   content.querySelector("#pesanKosong").innerHTML=
+    `<div class="empty">Tidak ditemukan berita yang cocok. Coba kata kunci lain.</div>`;
+  }
+
+  window.scrollTo({top:0,behavior:"smooth"});
+ }
+
+ if(e.target.id==="contactForm"){
+  e.preventDefault();
+
+  modal("Formulir Pesan",`
+   <p>Data formulir berhasil diperiksa.</p>
+   <p>Pesan belum dikirim karena website belum terhubung ke email atau server.</p>
+  `);
+ }
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  document.getElementById("modal")?.remove();
+ }
+});
+
+buatMenu();
+bukaHalaman("beranda");
+</script>
+
+</body>
+</html>
